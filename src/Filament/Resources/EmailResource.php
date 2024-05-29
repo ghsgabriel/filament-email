@@ -357,15 +357,4 @@ class EmailResource extends Resource
             'view' => ViewEmail::route('/{record}'),
         ];
     }
-
-    public static function canAccess(): bool
-    {
-        $roles = config('filament-email.can_access.role', []);
-
-        if (method_exists(auth()->user(), 'hasRole') && ! empty($roles)) {
-            return auth()->user()->hasRole($roles);
-        }
-
-        return true;
-    }
 }
